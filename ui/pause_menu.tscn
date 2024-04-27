@@ -1,33 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3hf1bg0fb8tb"]
+[gd_scene load_steps=3 format=3 uid="uid://c8sm6ujhqsf08"]
 
+[ext_resource type="Script" path="res://ui/pause_menu.gd" id="1_7t2xg"]
 [ext_resource type="Theme" uid="uid://ceet3xcdh71wb" path="res://ui/menu_theme.tres" id="1_vs77m"]
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="Panel"]
 process_mode = 2
-
-[node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_7t2xg")
 
-[node name="Panel" type="Panel" parent="Panel"]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = -105.0
-offset_right = 88.0
-offset_bottom = 105.0
+offset_left = -178.0
+offset_top = -201.0
+offset_right = 178.0
+offset_bottom = 201.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_vs77m")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,33 +41,38 @@ offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PauseLabel" type="Label" parent="Panel/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="PauseLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("1_vs77m")
 text = "------- Pause -------"
 
-[node name="ResumeButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_vs77m")
 text = "Resume"
 
-[node name="SaveButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer"]
+[node name="SaveButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_vs77m")
 text = "Save"
 
-[node name="LoadButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer"]
+[node name="LoadButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_vs77m")
 text = "Load"
 
-[node name="ExitButton" type="Button" parent="Panel/Panel/MarginContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_vs77m")
 text = "Exit"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/LoadButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

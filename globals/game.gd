@@ -9,3 +9,5 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func toggle_pause() -> void:
 	get_tree().paused = !get_tree().paused
+	Ui.pause_menu.visible = get_tree().paused
+	Ui.hud.visible = !get_tree().paused

@@ -8,4 +8,6 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
+Button/font_sizes/font_size = 32
+Label/font_sizes/font_size = 32
 Panel/styles/panel = SubResource("StyleBoxFlat_lkymx")
