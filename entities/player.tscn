@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0au63hrvsw4w"]
+
+[ext_resource type="Texture2D" uid="uid://ptx8whf4knnw" path="res://assets/Character.png" id="1_oafla"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oafla")
+hframes = 16
+vframes = 8
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
