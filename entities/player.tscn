@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ptx8whf4knnw" path="res://assets/Character.png" id="1_oafla"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tnsin"]
-size = Vector2(13, 17.5)
+size = Vector2(9, 5.5)
 
 [sub_resource type="Animation" id="Animation_4gdmc"]
 length = 0.001
@@ -237,7 +237,7 @@ states/Walk/position = Vector2(526, 109.5)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_l3dal"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_trlrm")]
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 1
+y_sort_enabled = true
 scale = Vector2(2, 2)
 script = ExtResource("1_boodm")
 
@@ -247,7 +247,7 @@ hframes = 16
 vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1.25)
+position = Vector2(0, 5.75)
 shape = SubResource("RectangleShape2D_tnsin")
 
 [node name="Camera2D" type="Camera2D" parent="."]

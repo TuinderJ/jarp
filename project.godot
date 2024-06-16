@@ -21,6 +21,10 @@ Game="*res://globals/game.gd"
 Player="*res://entities/player.tscn"
 Ui="*res://ui/UI.tscn"
 
+[display]
+
+window/size/mode=2
+
 [input]
 
 move_up={
@@ -57,6 +61,11 @@ pause_game={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":6,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
 
 [rendering]
 
