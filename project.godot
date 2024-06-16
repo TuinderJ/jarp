@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*res://globals/game.gd"
-Player="*res://entities/player.tscn"
 Ui="*res://ui/UI.tscn"
 
 [display]
