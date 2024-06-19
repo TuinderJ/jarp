@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dgygu0opef4xg"]
+
+[node name="StartingPosition" type="Node2D"]
