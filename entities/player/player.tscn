@@ -517,12 +517,12 @@ transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_
 graph_offset = Vector2(-187, 36)
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, -17)
 scale = Vector2(2, 2)
 script = ExtResource("1_boodm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
+position = Vector2(0, -8.5)
 texture = ExtResource("1_oafla")
 hframes = 16
 vframes = 8
@@ -531,15 +531,17 @@ vframes = 8
 z_index = 1000
 z_as_relative = false
 material = SubResource("ShaderMaterial_msug0")
+position = Vector2(0, -8.5)
 texture = ExtResource("1_oafla")
 hframes = 16
 vframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.75)
+position = Vector2(0, -2.75)
 shape = SubResource("RectangleShape2D_tnsin")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -8.5)
 zoom = Vector2(1.75, 1.75)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -566,9 +568,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -36.0
-offset_top = -32.5
+offset_top = -41.0
 offset_right = 36.0
-offset_bottom = -9.5
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
