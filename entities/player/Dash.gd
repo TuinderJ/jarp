@@ -1,7 +1,7 @@
 extends State
 
 var p0: = Vector2(0.0, 1.0)
-var p1: = Vector2(0.0, 15.0)
+var p1: = Vector2(0.0, 10.0)
 var p2: = Vector2(0.75, 1.0)
 var p3: = Vector2(1.0, 1.0)
 

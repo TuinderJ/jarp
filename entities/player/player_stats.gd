@@ -2,7 +2,7 @@ extends Node
 
 const SPEED: = 12500.0
 const DODGE_ROLL_VELOCITY: = 150.0
-const DASH_TIME: = .2
+const DASH_TIME: = .25
 
 var can_move: = true
 var speed_modifier: = 1.0
