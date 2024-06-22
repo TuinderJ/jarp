@@ -1,9 +1,11 @@
 extends Node
 
-const SPEED: = 12500.0
-const DODGE_ROLL_VELOCITY: = 150.0
-const DASH_TIME: = .25
-
 var can_move: = true
+var acceleration: float
+var friction: float
+
 var speed_modifier: = 1.0
 var temp_speed_modifier: = 1.0
+var has_control_of_camera: = true
+
+var camera: Camera2D

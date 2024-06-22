@@ -1,13 +1,15 @@
 extends State
 
+@onready var timer: Timer = $Timer
+@onready var idle: Node = $"../Idle"
+
 var p0: = Vector2(0.0, 1.0)
 var p1: = Vector2(0.0, 10.0)
 var p2: = Vector2(0.75, 1.0)
 var p3: = Vector2(1.0, 1.0)
-var dash_particle: PackedScene
 
-@onready var timer: Timer = $Timer
-@onready var idle: Node = $"../Idle"
+var dash_particle: PackedScene
+var direction: Vector2
 
 signal dash_over
 
@@ -16,13 +18,15 @@ func _ready() -> void:
 	dash_particle = load("res://entities/player/dash_particle.tscn")
 
 func on_enter():
-	timer.wait_time = Player.DASH_TIME
+	direction = owner.direction
+	timer.wait_time = owner.DASH_TIME
 	timer.start()
 	var dash_particle_instance: GPUParticles2D = dash_particle.instantiate()
 	dash_particle_instance.global_position = owner.global_position
 	add_child(dash_particle_instance)
 
 func on_exit():
+	Player.temp_speed_modifier = 1
 	dash_over.emit()
 
 func state_process(_delta):
@@ -36,6 +40,7 @@ func state_process(_delta):
 
 	var s = r0.lerp(r1, t)
 	Player.temp_speed_modifier = s.y
+	owner.velocity = direction * owner.SPEED * Player.speed_modifier * Player.temp_speed_modifier
 
 func on_timer_timeout():
 	next_state = idle
