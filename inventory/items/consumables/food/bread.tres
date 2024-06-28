@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Consumable" load_steps=5 format=3 uid="uid://tf0vm225rlxj"]
+
+[ext_resource type="Texture2D" uid="uid://drp5gd4wd7eus" path="res://assets/icons/items/food/Bread.png" id="1_ok3j4"]
+[ext_resource type="Script" path="res://inventory/gd_resources/consumable.gd" id="1_u5438"]
+[ext_resource type="Script" path="res://inventory/gd_resources/temporary_stat_boost.gd" id="2_0xyrs"]
+
+[sub_resource type="Resource" id="Resource_rsct7"]
+script = ExtResource("2_0xyrs")
+duration = 120.0
+stat = "Stamina Regen"
+value = 5
+
+[resource]
+script = ExtResource("1_u5438")
+type = 0
+stat_boosts = Array[Resource("res://inventory/gd_resources/stat_boost.gd")]([SubResource("Resource_rsct7")])
+name = "bread"
+description = "A piece of bread"
+weight = 0
+inventory_icon = ExtResource("1_ok3j4")

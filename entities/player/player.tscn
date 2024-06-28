@@ -1,14 +1,42 @@
-[gd_scene load_steps=48 format=3 uid="uid://v5bwr8kacro7"]
+[gd_scene load_steps=58 format=3 uid="uid://v5bwr8kacro7"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_boodm"]
 [ext_resource type="Texture2D" uid="uid://ptx8whf4knnw" path="res://assets/Character.png" id="1_oafla"]
+[ext_resource type="Resource" uid="uid://tf0vm225rlxj" path="res://inventory/items/consumables/food/bread.tres" id="2_11gb2"]
+[ext_resource type="Resource" uid="uid://bguif8roltbyw" path="res://inventory/items/armor/copper_helmet.tres" id="2_dgp4c"]
+[ext_resource type="Script" path="res://inventory/gd_resources/player_inventory.gd" id="2_ynxo3"]
+[ext_resource type="Script" path="res://inventory/gd_resources/consumable_slot.gd" id="3_8dvbt"]
+[ext_resource type="Script" path="res://inventory/gd_resources/equipment_slot.gd" id="3_8e31h"]
 [ext_resource type="Shader" path="res://entities/player/player_silhouette.gdshader" id="3_i0fyx"]
-[ext_resource type="Script" path="res://entities/player/Idle.gd" id="5_c7pfb"]
-[ext_resource type="Script" path="res://entities/player/StateMachine.gd" id="5_i0d3y"]
-[ext_resource type="Script" path="res://entities/player/Walking.gd" id="6_llw5j"]
-[ext_resource type="Script" path="res://entities/player/Dashing.gd" id="7_0patw"]
-[ext_resource type="Script" path="res://entities/player/Attack.gd" id="8_8fqmg"]
-[ext_resource type="Script" path="res://ui/debug_screen.gd" id="10_iul0l"]
+[ext_resource type="Script" path="res://entities/player/stateMachine.gd" id="5_pa4gq"]
+[ext_resource type="Script" path="res://entities/player/idle.gd" id="6_fksn6"]
+[ext_resource type="Resource" uid="uid://c5uwpkp2rcnry" path="res://inventory/items/weapons/wooden_sword.tres" id="6_uyihx"]
+[ext_resource type="Script" path="res://entities/player/walking.gd" id="7_apudd"]
+[ext_resource type="Script" path="res://entities/player/dashing.gd" id="8_33y4s"]
+[ext_resource type="Script" path="res://entities/player/resource_recharge_timer.gd" id="9_k4xv7"]
+[ext_resource type="Script" path="res://entities/player/attack.gd" id="9_r8lia"]
+
+[sub_resource type="Resource" id="Resource_wxvgs"]
+script = ExtResource("3_8dvbt")
+item = ExtResource("2_11gb2")
+quantity = 10
+
+[sub_resource type="Resource" id="Resource_o7hjo"]
+script = ExtResource("3_8e31h")
+item = ExtResource("2_dgp4c")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_8hw2n"]
+script = ExtResource("3_8e31h")
+item = ExtResource("6_uyihx")
+quantity = 1
+
+[sub_resource type="Resource" id="Resource_te5u1"]
+script = ExtResource("2_ynxo3")
+equipment_inventory = Array[ExtResource("3_8e31h")]([SubResource("Resource_o7hjo"), SubResource("Resource_8hw2n")])
+consumables_inventory = Array[ExtResource("3_8dvbt")]([SubResource("Resource_wxvgs")])
+resources_inventory = Array[Resource("res://inventory/gd_resources/resource_slot.gd")]([])
+currency = 25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_msug0"]
 shader = ExtResource("3_i0fyx")
@@ -506,9 +534,16 @@ states/Walk/position = Vector2(526, 109.5)
 transitions = ["Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_trlrm"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_7a81p"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_s3riy"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_gpj6e"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_wtk5q"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_8kopp")]
 graph_offset = Vector2(-151, 14)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["persistant"]]
 scale = Vector2(2, 2)
 script = ExtResource("1_boodm")
+inventory = SubResource("Resource_te5u1")
+max_stamina = 20
+stamina_recharge_rate = 2.0
+max_health = 10
+max_mana = 5
+damage = 1
+armor = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -530,9 +565,8 @@ vframes = 8
 position = Vector2(0, -2.75)
 shape = SubResource("RectangleShape2D_tnsin")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
-position_smoothing_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -549,59 +583,30 @@ parameters/Attack/blend_position = Vector2(0.00960004, -0.726872)
 parameters/Idle/blend_position = Vector2(0.00712252, -0.816273)
 parameters/Walk/blend_position = Vector2(0.0455841, -0.236842)
 
+[node name="ResourceRechargeTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+script = ExtResource("9_k4xv7")
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state")]
-script = ExtResource("5_i0d3y")
+script = ExtResource("5_pa4gq")
 current_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_c7pfb")
+script = ExtResource("6_fksn6")
 
 [node name="Walking" type="Node" parent="StateMachine"]
-script = ExtResource("6_llw5j")
+script = ExtResource("7_apudd")
 
 [node name="Dashing" type="Node" parent="StateMachine"]
-script = ExtResource("7_0patw")
+script = ExtResource("8_33y4s")
 
 [node name="Timer" type="Timer" parent="StateMachine/Dashing"]
 one_shot = true
 
 [node name="Attack" type="Node" parent="StateMachine"]
-script = ExtResource("8_8fqmg")
+script = ExtResource("9_r8lia")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="DebugScreen" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("10_iul0l")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DebugScreen"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DebugScreen/MarginContainer"]
-layout_mode = 2
-
-[node name="State" type="Label" parent="CanvasLayer/DebugScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "State: "
-
-[node name="Speed" type="Label" parent="CanvasLayer/DebugScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Speed: "
-
-[node name="Acceleration" type="Label" parent="CanvasLayer/DebugScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Acceleration: "
-
-[node name="Friction" type="Label" parent="CanvasLayer/DebugScreen/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Friction: "
+[connection signal="timeout" from="ResourceRechargeTimer" to="ResourceRechargeTimer" method="_on_timeout"]

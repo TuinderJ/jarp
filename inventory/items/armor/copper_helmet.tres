@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Armor" load_steps=6 format=3 uid="uid://bguif8roltbyw"]
+
+[ext_resource type="Script" path="res://inventory/gd_resources/armor.gd" id="1_0tsih"]
+[ext_resource type="Texture2D" uid="uid://df5d8ujkrjjnr" path="res://assets/icons/items/equipment/armor/Copper_Helmet.png" id="1_tffbi"]
+[ext_resource type="Script" path="res://inventory/gd_resources/stat_boost.gd" id="3_puv2l"]
+
+[sub_resource type="Resource" id="Resource_drp11"]
+script = ExtResource("3_puv2l")
+stat = "Armor"
+value = 5
+
+[sub_resource type="Resource" id="Resource_thl5c"]
+script = ExtResource("3_puv2l")
+stat = "Stamina"
+value = -2
+
+[resource]
+script = ExtResource("1_0tsih")
+category = "Head"
+stat_boosts = Array[ExtResource("3_puv2l")]([SubResource("Resource_drp11"), SubResource("Resource_thl5c")])
+on_hit_effects = Array[Resource("res://inventory/gd_resources/on_hit_effect.gd")]([])
+abilities = Array[Resource("res://inventory/gd_resources/ability.gd")]([])
+name = "copper_helmet"
+description = "A helmet made of copper."
+weight = 5
+inventory_icon = ExtResource("1_tffbi")

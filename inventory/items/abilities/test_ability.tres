@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bly7hegiv18qu"]
+
+[ext_resource type="Script" path="res://inventory/gd_resources/ability.gd" id="1_vrl0o"]
+
+[resource]
+script = ExtResource("1_vrl0o")
+type = "Passive"
+effect = "ice_storm"
+description = "Creates an ice storm around the player."

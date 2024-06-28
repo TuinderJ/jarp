@@ -5,7 +5,9 @@ func _ready() -> void:
 	add_player()
 
 func add_player():
-	const player_scene = preload("res://entities/player/player.tscn")
-	var player = player_scene.instantiate()
-	player.global_position = get_node("StartingPosition").global_position
+	var player: Player = Game.player
+	if !player:
+		const player_scene = preload("res://entities/player/player.tscn")
+		player = player_scene.instantiate()
 	add_child(player)
+	player.position = get_node("StartingPosition").position

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://c5uwpkp2rcnry"]
+
+[ext_resource type="Texture2D" uid="uid://c3rsoqokf0cjf" path="res://assets/icons/items/equipment/weapons/Wooden_Weapon3.png" id="1_qlpwv"]
+[ext_resource type="Script" path="res://inventory/gd_resources/weapon.gd" id="1_uyu4t"]
+[ext_resource type="Script" path="res://inventory/gd_resources/stat_boost.gd" id="3_v5r70"]
+
+[sub_resource type="Resource" id="Resource_qgvqn"]
+script = ExtResource("3_v5r70")
+stat = "Damage Boost Percent"
+value = 5
+
+[resource]
+script = ExtResource("1_uyu4t")
+damage = 2
+stat_boosts = Array[ExtResource("3_v5r70")]([SubResource("Resource_qgvqn")])
+on_hit_effects = Array[Resource("res://inventory/gd_resources/on_hit_effect.gd")]([])
+abilities = Array[Resource("res://inventory/gd_resources/ability.gd")]([])
+name = "wooden_sword"
+description = "This is a sword made of wood. Some WOOD say that it's too OP."
+weight = 0
+inventory_icon = ExtResource("1_qlpwv")

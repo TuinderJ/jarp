@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="StatSheet" load_steps=2 format=3 uid="uid://dqvtm4gc87mf4"]
+
+[ext_resource type="Script" path="res://entities/stat sheets/stat_sheet.gd" id="1_3ludi"]
+
+[resource]
+script = ExtResource("1_3ludi")
+name = "Slime"
+type = "Add"
+health = 0
+damage = 0
+armor = 0

@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkamchyit13ym"]
+
+[ext_resource type="Theme" uid="uid://ceet3xcdh71wb" path="res://ui/menu_theme.tres" id="1_gjs4p"]
+[ext_resource type="Script" path="res://ui/inventory_menu.gd" id="1_tfvfs"]
+[ext_resource type="PackedScene" uid="uid://bpwe8rwfohkvh" path="res://ui/inventory_slot.tscn" id="2_x1fdh"]
+
+[node name="InventoryMenu" type="PanelContainer"]
+offset_right = 66.0
+offset_bottom = 66.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_gjs4p")
+script = ExtResource("1_tfvfs")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+tab_alignment = 1
+
+[node name="Equipment" type="MarginContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Equipment"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Equipment/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="EquipmentContainer" type="GridContainer" parent="TabContainer/Equipment/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 10
+
+[node name="Slot" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot2" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot3" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot4" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot5" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot6" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot7" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot8" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot9" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Slot10" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+layout_mode = 2
+
+[node name="Consumables" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Consumables"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Consumables/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ConsumablesContainer" type="GridContainer" parent="TabContainer/Consumables/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 10
+
+[node name="Resources" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Resources"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Resources/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ResourcesContainer" type="GridContainer" parent="TabContainer/Resources/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 10
