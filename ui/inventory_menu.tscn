@@ -13,105 +13,54 @@ size_flags_vertical = 4
 theme = ExtResource("1_gjs4p")
 script = ExtResource("1_tfvfs")
 
-[node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 0
-tab_alignment = 1
-
-[node name="Equipment" type="MarginContainer" parent="TabContainer"]
+[node name="Equipment" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Equipment"]
+[node name="PanelContainer" type="PanelContainer" parent="Equipment"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Equipment/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Equipment/PanelContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="EquipmentContainer" type="GridContainer" parent="TabContainer/Equipment/PanelContainer/MarginContainer"]
+[node name="InventoryContainer" type="GridContainer" parent="Equipment/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 10
 
-[node name="Slot" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot2" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot2" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot3" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot3" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot4" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot4" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot5" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot5" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot6" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot6" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot7" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot7" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot8" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot8" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot9" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot9" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
 
-[node name="Slot10" parent="TabContainer/Equipment/PanelContainer/MarginContainer/EquipmentContainer" instance=ExtResource("2_x1fdh")]
+[node name="Slot10" parent="Equipment/PanelContainer/MarginContainer/InventoryContainer" instance=ExtResource("2_x1fdh")]
 layout_mode = 2
-
-[node name="Consumables" type="MarginContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Consumables"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Consumables/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="ConsumablesContainer" type="GridContainer" parent="TabContainer/Consumables/PanelContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-columns = 10
-
-[node name="Resources" type="MarginContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Resources"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Resources/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="ResourcesContainer" type="GridContainer" parent="TabContainer/Resources/PanelContainer/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-columns = 10

@@ -8,18 +8,20 @@ signal mana_updated(current_mana: int)
 signal max_stamina_updated(max_stamina: int)
 signal stamina_updated(current_stamina: float)
 
-@export var inventory: PlayerInventory
+@export var inventory: Inventory
 @export_group("Movement")
 @export var speed: = 200.0 ## Player movement speed.
 @export var base_acceleration: = 25.0 ## Acceleration if the tile the player is currently standing on does not have the acceleration set.
 @export var base_friction: = 25.0 ## Friction if the tile the player is currently standing on does not have the friction set.
 @export var dash_time: = .2 ## Amount of time spent dashing. Increase for a longer dash.
+@export_group("Stamina")
 @export var max_stamina: int: ## Amount of stamina the player has.
 	set(new_value):
 		max_stamina = new_value
 		max_stamina_updated.emit(max_stamina)
 @export var stamina_recharge_rate: float ## The amount of stamina that will recharge over 1 second.
-@export var dash_stamina_drain: = 5 ## How much stamina a dash will take.
+@export var stamina_recharge_delay: float ## The amount of time that will pass before stamina begins to recharge.
+@export var dash_stamina_drain: = 5 ## How much stamina a dash will consume.
 @export_group("Combat")
 @export var max_health: int:
 	set(new_value):
@@ -112,9 +114,29 @@ func _input(event: InputEvent) -> void:
 		if event.pressed:
 			take_damage()
 
-func take_damage():
+func take_damage() -> void:
 	if current_health == 0:
 		current_health = max_health + 1
 	current_health -= 1
-	inventory.consumables_inventory[0].quantity -= 1
-	inventory.currency -= 1
+	spend_stamina(10)
+
+func spend_stamina(stamina_to_spend: int) -> bool:
+	if stamina_to_spend > current_stamina:
+		return false
+	
+	current_stamina -= stamina_to_spend
+
+	if stamina_recharge_tween:
+		stamina_recharge_tween.kill()
+		stamina_recharge_tween = null
+	stamina_recharge_tween = create_tween()
+	stamina_recharge_tween.finished.connect(on_stamina_recharge_tween_finished)
+	stamina_recharge_tween.tween_interval(stamina_recharge_delay)
+
+	var duration = (max_stamina - current_stamina) / stamina_recharge_rate
+	stamina_recharge_tween.tween_property(self, "current_stamina", max_stamina, duration)
+	return true
+
+func on_stamina_recharge_tween_finished() -> void:
+	stamina_recharge_tween.kill()
+	stamina_recharge_tween = null

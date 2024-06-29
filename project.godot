@@ -22,6 +22,7 @@ Ui="*res://ui/uI.tscn"
 
 [display]
 
+window/size/mode=2
 window/stretch/aspect="expand"
 
 [editor_plugins]

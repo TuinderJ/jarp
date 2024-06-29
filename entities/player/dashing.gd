@@ -24,7 +24,7 @@ func on_enter():
 	var dash_particle_instance: GPUParticles2D = dash_particle.instantiate()
 	add_child(dash_particle_instance)
 	dash_particle_instance.position = owner.position
-	owner.current_stamina -= owner.dash_stamina_drain
+	owner.spend_stamina(owner.dash_stamina_drain)
 
 func on_exit():
 	owner.temp_speed_modifier = 1
