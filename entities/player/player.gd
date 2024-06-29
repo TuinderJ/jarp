@@ -80,6 +80,8 @@ func _ready() -> void:
 	Game.player = self
 	tile_map = get_parent().get_node("TileMap")
 	animation_tree.set("parameters/Idle/blend_position", Vector2(0, 1))
+	animation_tree.set("parameters/Walk/blend_position", Vector2(0, 1))
+	animation_tree.set("parameters/Attack/blend_position", Vector2(0, 1))
 
 func _physics_process(_delta: float) -> void:
 	handle_terrain()
@@ -107,18 +109,6 @@ func save() -> Dictionary:
 
 func _load() -> void:
 	inventory = load("user://player_inventory.tres").duplicate()
-
-func _input(event: InputEvent) -> void:
-	#TODO Remove this. It's only for testing.
-	if event is InputEventMouseButton:
-		if event.pressed:
-			take_damage()
-
-func take_damage() -> void:
-	if current_health == 0:
-		current_health = max_health + 1
-	current_health -= 1
-	spend_stamina(10)
 
 func spend_stamina(stamina_to_spend: int) -> bool:
 	if stamina_to_spend > current_stamina:

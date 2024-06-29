@@ -1,6 +1,7 @@
 extends State
 
 @onready var walking: Node = $"../Walking"
+@onready var attack: Node = $"../Attack"
 
 func on_enter():
 	playback.travel("Idle")
@@ -11,3 +12,10 @@ func state_process(_delta: float) -> void:
 		next_state = walking
 	else:
 		owner.velocity = owner.velocity.move_toward(owner.direction, owner.friction)
+
+func state_input(event: InputEvent) -> void:
+	if next_state:
+		return
+	
+	if event.is_action_pressed("attack"):
+		next_state = attack
