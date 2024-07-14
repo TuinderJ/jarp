@@ -1,7 +1,10 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://b7l5rsf8cmmnp"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://b7l5rsf8cmmnp"]
 
 [ext_resource type="Texture2D" uid="uid://c64slyolrl6ad" path="res://assets/tile maps/Grasslands 4 Seasons/Grounds_Spring.png" id="1_7u221"]
 [ext_resource type="Texture2D" uid="uid://cx71qjtux26sx" path="res://assets/tile maps/Grasslands 4 Seasons/Grasslands_Spring.png" id="2_duunl"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_unghu"]
+resource_name = "Objects"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwc3j"]
 texture = ExtResource("1_7u221")
@@ -2688,3 +2691,4 @@ custom_data_layer_1/name = "friction"
 custom_data_layer_1/type = 3
 sources/4 = SubResource("TileSetAtlasSource_nwc3j")
 sources/5 = SubResource("TileSetAtlasSource_mjvo7")
+sources/0 = SubResource("TileSetScenesCollectionSource_unghu")
