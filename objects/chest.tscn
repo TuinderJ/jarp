@@ -1,10 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2cd0exirbanp"]
+[gd_scene load_steps=4 format=3 uid="uid://d2cd0exirbanp"]
 
 [ext_resource type="Script" path="res://objects/base_object.gd" id="1_4tmk7"]
-[ext_resource type="Script" path="res://objects/components/interactable.gd" id="4_7wel7"]
+[ext_resource type="Texture2D" uid="uid://cggwdch645d8v" path="res://assets/objects/Chest.png" id="3_6dprs"]
+[ext_resource type="Script" path="res://objects/Node.gd" id="3_vx4dh"]
 
 [node name="Chest" type="Node2D"]
 script = ExtResource("1_4tmk7")
+in_world_asset = ExtResource("3_6dprs")
 
-[node name="Interactable" type="Node" parent="."]
-script = ExtResource("4_7wel7")
+[node name="Node" type="Node" parent="."]
+script = ExtResource("3_vx4dh")
